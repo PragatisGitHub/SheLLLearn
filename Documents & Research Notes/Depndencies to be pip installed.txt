@@ -1,0 +1,44 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy
+
+keras.models import Sequential
+keras.utils import to_categorical
+keras.layers import Dense, Dropout, Flatten
+keras.models import load_model
+keras.callbacks import ModelCheckpoint
+
+from flask import Flask, render_template, json, jsonify, request, redirect, url_for
+
+import keras
+from keras.preprocessing import image
+from keras import backend as K
+
+import datetime
+import os
+import base64
+import tempfile
+from time import time (see)
+
+from keras.preprocessing.image import img_to_array
+
+pip install gunicorn
+pip install psycopg2
+pip install flask
+pip install pandas
+pip install matplotlib
+pip install numpy
+pip install datetime
+pip install time (see)
+pip install Flask
+pip install render_template - No matching
+pip install json - No matching
+pip install jsonify
+pip install request
+pip install redirect - Nomatching
+pip install url_for - No matching
+pip install os - No matching
+pip install base64 - No matching
+pip install tempfile - No matching
+pip install keras
+pip install tensorflow

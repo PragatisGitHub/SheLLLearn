@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SheLLLearn Letters</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../static/js/painterro-0.2.68.min.js"></script>
+    <!-- <script src="./painterro-0.2.68.min"></script> -->
+    <style>
+    body {
+        font: 20px Montserrat, sans-serif;
+        line-height: 2;
+        color: #000000;
+       
+    }
+    p {font-size: 16px;}
+    .margin {margin-bottom: 45px;}
+    .bg-1 { 
+        background-color: #1aa9bc; /* Green */
+        color: #ffffff;
+    }
+    .navbar {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border: 0;
+        border-radius: 0;
+        margin-bottom: 0;
+        font-size: 12px;
+        letter-spacing: 5px;
+    }
+    .navbar-nav  li a:hover {
+        color: #1abc9c !important;
+    }
+    .ptro-holder-wrapper {
+      height: 500px !important; 
+      width: 500px !important;
+      margin-top: 100px !important;
+    }
+    .ptro-holder {
+      height: 500px;
+      width: 500px;
+      margin-top: 100px;
+    }
+    img {
+      float: right;
+    }
+    </style>
+  </head>
+  <body>
+  
+  <!-- Navbar -->
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#">SheLLLearn - Letters</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/ShellLearn_book">Home</a></li>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/letters">Letters</a></li>
+          <li><a href="/numbers">Numbers</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+      <!-- END Navbar --> 
+      <div class="row">
+        <div class="col-sm-12"><h2><p class="text-center"></p>Directions:  Practice the Letter in the picture</p></h2></div>
+      </div>
+    <div class="row">
+      <div class="col-sm-6">
+    
+        <!-- Start Painterro -->
+    <script>
+        var ptro = Painterro({
+            saveHandler: function (image, done) {
+                var xhr = new XMLHttpRequest()
+                xhr.open('POST', 'http://127.0.0.1:5000/Alphabets/')
+                xhr.setRequestHeader('Content-Type', 'application/json')
+                xhr.send(JSON.stringify({
+                    image: image.asDataURL('image/png')
+                }))
+                xhr.onload = function (e) {
+                  //  console.log(this.responseText);
+                    done(true)
+                    window.location.reload()
+                    var obj = JSON.parse(this.responseText);
+                    // alert("Prediction:  - "+obj.prediction+" - \n \nSuccess:  "+obj.success);
+                    alert("Prediction:  - "+obj.prediction);
+                }
+
+            },
+            defaultTool: "brush",
+            // fontStrokeSize: 90
+            defaultLineWidth: 20
+        })
+        ptro.show()
+      </script>
+        <!-- End Painterro -->
+        <!-- Begin Randomizer-->
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+      <script>
+        function random_upper(){
+        var UpperLetterCards=new Array()
+        //specify random images below. You can have as many as you wish
+        UpperLetterCards[0] = 'CapitalA.png'
+        UpperLetterCards[1] = 'CapitalB.png'
+        UpperLetterCards[2] = 'CapitalC.png'
+        UpperLetterCards[3] = 'CapitalD.png'
+        UpperLetterCards[4] = 'CapitalE.png'
+        UpperLetterCards[5] = 'CapitalF.png'
+        UpperLetterCards[6] = 'CapitalG.png'
+        UpperLetterCards[7] = 'CapitalH.png'
+        UpperLetterCards[8] = 'CapitalI.png'
+        UpperLetterCards[9] = 'CapitalJ.png'
+        UpperLetterCards[10] = 'CapitalK.png'
+        UpperLetterCards[11] = 'CapitalL.png'
+        UpperLetterCards[12] = 'CapitalM.png'
+        UpperLetterCards[13] = 'CapitalN.png'
+        UpperLetterCards[14] = 'CapitalO.png'
+        UpperLetterCards[15] = 'CapitalP.png'
+        UpperLetterCards[16] = 'CapitalQ.png'
+        UpperLetterCards[17] = 'CapitalR.png'
+        UpperLetterCards[18] = 'CapitalS.png'
+        UpperLetterCards[19] = 'CapitalT.png'
+        UpperLetterCards[20] = 'CapitalU.png'
+        UpperLetterCards[21] = 'CapitalV.png'
+        UpperLetterCards[22] = 'CapitalW.png'
+        UpperLetterCards[23] = 'CapitalX.png'
+        UpperLetterCards[24] = 'CapitalY.png'
+        UpperLetterCards[25] = 'CapitalZ.png'
+
+        var ry=Math.floor(Math.random()*UpperLetterCards.length)
+        if (ry==0)
+        ry=1
+        document.write('<img src="../static/img/upperlettercards/'+UpperLetterCards[ry]+'" border=0, height=500 float: center;>')
+        }
+        random_upper()
+    </script>
+    <!-- End Randomizer -->
+    </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

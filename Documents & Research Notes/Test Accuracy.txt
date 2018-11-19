@@ -1,0 +1,6 @@
+Model            Test Accuracy Test Loss
+Digits Dense    98.8100%      3.8831%
+Digits CNN     99.4650%      1.8860%
+
+Letters Dense   88.5330%     34.5194%  
+Letters CNN    92.0535%     24.9945%

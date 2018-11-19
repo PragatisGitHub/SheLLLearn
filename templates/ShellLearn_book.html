@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SheLLLearn Home</title>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../static/js/painterro-0.2.68.min.js"></script>
+
+    <!-- CSS -->	
+    <style type="text/css">
+    html, 
+    body {
+        margin-bottom: 50px;
+        height: 100%;
+    }
+    body {
+    background-color: #1aa9bc; /* Green */
+    background-repeat: no-repeat; 
+    background-size: 100% 100%;
+    }
+    </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>                        
+            </button>
+            <a class="navbar-brand" href="/ShellLearn_book">SheLLLearn Home</a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/ShellLearn_book">Home</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/letters">Letters</a></li>
+                <li><a href="/numbers">Numbers</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+          <!-- END Navbar -->
+          <div class="row"><h1 style="text-align: center; color:rgb(16, 15, 58)"> <i>What shall you learn today? </i></h1></div>
+        <br> <br> <br>
+
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="row">
+                    <a href="/letters">
+                        <img src="../static/img/ABCButton.png" alt="ABC's" style="width:500px;height:500px;border:0;">
+                    </a>
+                </div>                    
+            </div>
+            <div class="col-sm-2" >
+                <p></p>
+            </div>
+            <div class="col-sm-5">
+                <div class="row">
+                        <a href="/numbers">
+                            <img src="../static/img/123Button.png" alt="123's" style="width:500px;height:500px;border:0;">
+                        </a>
+                </div>  
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="row">
+                    <div class="centered">      
+                    </div>
+                </div>                    
+            </div>
+            <div class="col-sm-2" >
+                <p></p>
+            </div>
+            <div class="col-sm-5">
+                <div class="row">           
+                </div>  
+            </div>
+        </div>
+    </div>
+    <div>
+        {% for f in files %}
+        <div class="img-browse">
+            <a href="/image/{{f}}"><img src="/image/{{f}}"/></a>
+        </div>
+        {% endfor %}
+    </div>
+    <style>
+        .img-browse {
+            width: 600px;
+            border: 1px solid gray;
+            padding: 10px;
+            margin: 10px;
+        }
+        .img-browse img {
+            width: 100%;
+        }
+    </style>
+    <script>
+        var ptro = Painterro({
+            saveHandler: function (image, done) {
+                var xhr = new XMLHttpRequest()
+                xhr.open('POST', 'http://127.0.0.1:5000/save-as-base64/')
+                xhr.setRequestHeader('Content-Type', 'application/json')
+                xhr.send(JSON.stringify({
+                    image: image.asDataURL('image/png')
+                }))
+                xhr.onload = function (e) {
+                    done(true)
+                    window.location.reload()
+                }
+            }
+        })
+    </script>   
+</body>
+</html>

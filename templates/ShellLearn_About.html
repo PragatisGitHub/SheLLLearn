@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>SheLLLearn About</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  body {
+      font: Helvetica,Arial,sans-serif;
+      line-height: 1.8;
+      color: rgb(250, 247, 84);
+  }
+  p {font-size: 16px;}
+  .margin {margin-bottom: 45px;}
+  .bg-1 { 
+      background-color: #1aa9bc; /* Green */
+      color: #ffffff;
+  }
+  .bg-2 { 
+      background-color: #474e5d; /* Dark Blue */
+      color: #ffffff;
+  }
+  .bg-3 { 
+      background-color: #ffffff; /* White */
+      color: #555555;
+  }
+  .bg-4 { 
+      background-color: #2f2f2f; /* Black Gray */
+      color: #fff;
+  }
+  .container-fluid {
+      padding-top: 70px;
+      padding-bottom: 70px;
+  }
+  .navbar {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 12px;
+      letter-spacing: 5px;
+  }
+  .navbar-nav  li a:hover {
+      font: Helvetica,Arial,sans-serif;
+      color: #1abc9c !important;
+  }
+
+  .navbar-brand {
+    color: rgb(250, 247, 84);
+  }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#" style="color:teal;">ShellLearn - About Us</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/ShellLearn_book">Home</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/letters">Letters</a></li>
+        <li><a href="/numbers">Numbers</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- First Container -->
+<div class="container-fluid bg-1 text-center">
+  <h3 class="margin">What is ShellLearn?</h3>
+  <img src="../static/img/Seashells.jpg" class="img-responsive img-square margin" style="display:inline" alt="Shell" width="350" height="350">
+  <p>ShellLearn is an interactive learning tool that evaluates the writing skills of young children using a trained computer model.</p>
+  <p>Users can use the Panterro App to write letters and numbers, our model will evaluate their try and record meaningful data on their improvement. </p>
+  <p>There is positive reinforcement as well as encouragement to keep trying!</p>
+  <form action="/ShellLearn_book" method="POST">
+    <input class="btn btn-default btn-lg" type="submit" value="Try it Now!">
+  </form>
+</div>
+<!-- First Container -->
+<div class="container-fluid bg-2 text-center">
+  <h3 class="margin">Who Are We?</h3>
+  <img src="../static/img/Shell_Learn.jpg" class="img-responsive img-square margin" style="display:inline" alt="Shell" width="350" height="350">
+  <p>ShellLearn was created by four students at Rutgers School of Continuing Studies as the final project for our Data Science and Visualization Boot Camp through Rutgers University.</p>
+  <p>Backend development was done mostly by Pragati Mehta and Saswati Mahap.</p>
+  <p>Frontend development was done mostly by Alfia Fahrutdinova and Jill Stratton.</p>
+  <p>However, each team member contributed in many ways to each part of the final project!</p>
+</div>
+
+<!-- Third Container (Grid) -->
+<div class="container-fluid bg-3 text-center">    
+  <h3 class="margin">Where To Find Us?</h3><br>
+  <p>ShellLearn was created by:  </p>
+  <div class="row">
+    <div class="col-sm-3">
+      <p>Alfia Fahrutdinova</p>
+      <img src="../static/img/members/afahrutdinova.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+      <div class="card-body">
+        <p><a href="hhttps://github.com/Alfiausa" class="card-link">GitHub Portfolio link</a></p>
+        <p><a href="https://www.linkedin.com/in/alfia-fahrutdinova-ab6258118/" class="card-link">LinkedIn link</a></p>
+      </div>
+    </div>
+    <div class="col-sm-3"> 
+      <p>Saswati Mahapatra</p>
+      <img src="../static/img/members/smahapatra.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+      <div class="card-body">
+        <p><a href="https://github.com/SaswatiMahap" class="card-link">GitHub Portfolio link</a></p>
+        <p><a href="https://www.linkedin.com/in/saswati-mahapatra-84284912/" class="card-link">LinkedIn link</a></p>
+      </div>
+    </div>
+    <div class="col-sm-3"> 
+      <p>Pragati (Soni) Mehta</p>
+      <img src="../static/img/members/pmehta.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+      <div class="card-body">
+        <p><a href="https://github.com/PragatisGitHub" class="card-link">GitHub Portfolio link</a></p>
+        <p><a href="https://www.linkedin.com/in/pragati-mehta-%E2%99%95-3b10823/" class="card-link">LinkedIn link</a></p>
+      </div>
+    </div>
+    <div class="col-sm-3"> 
+      <p>Jill Stratton</p>
+      <img src="../static/img/members/jstratton.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+      <div class="card-body">
+        <p><a href="https://github.com/jmstratton" class="card-link">GitHub Portfolio link</a></p>
+        <p><a href="https://www.linkedin.com/in/strattonjill/" class="card-link">LinkedIn link</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="container-fluid bg-4 text-center">
+  <p>Bootstrap Theme Made By <a href="https://www.w3schools.com">www.w3schools.com</a></p> 
+</footer>
+
+</body>
+</html>

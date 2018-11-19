@@ -1,0 +1,28 @@
+The EMNIST dataset is a set of handwritten character digits derived from the NIST Special Database 19  and converted to a 28x28 pixel image format and dataset structure that directly matches the MNIST dataset.
+
+Formats:
+The dataset is available in multiple file formats:
+1. CSV file format - .csv & supporting .txt
+2. Binary file format - idx
+3. Matlab format - .mat (First 116 bytes for timestamp).
+
+Decision Point: 
+Choosing binary file format 
+		        over csv because of performance and memory requirements.
+                                          over matlab because we do not currently need timestamp info.
+
+Dataset Summary:
+There are six different splits provided in this dataset. A short summary of the dataset is provided below:
+
+EMNIST ByClass: 814,255 characters. 62 unbalanced classes([0-9],[a-z] and [A-Z]).
+EMNIST ByMerge: 814,255 characters. 47 unbalanced classes.
+EMNIST Balanced:  131,600 characters. 47 balanced classes - set of characters with an equal number of samples per class
+EMNIST Letters: 145,600 characters. 26 balanced classes -  a balanced set of the uppercase and lowercase letters into a single 26-class task
+EMNIST Digits: 280,000 characters. 10 balanced classes - balanced handwritten digit datasets directly compatible with the original MNIST dataset
+EMNIST MNIST: 70,000 characters. 10 balanced classes - balanced handwritten digit datasets directly compatible with the original MNIST dataset
+
+Read about the difference between ByClass & ByMerge and also balanced & unbalanced classes.
+
+Decision Point: 
+Choosing EMNIST ByClass because of maximum number of characters and classess to get more accuracy and less error.
+                                          

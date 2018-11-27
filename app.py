@@ -1,4 +1,4 @@
-from flask import Flask, render_template, json, jsonify, request, redirect, url_for
+from flask import Flask, jsonify, request, render_template, json, redirect, url_for
 
 import keras
 from keras.preprocessing import image

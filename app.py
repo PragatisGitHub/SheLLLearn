@@ -172,7 +172,7 @@ def Alphabets():
         if userID == name["name"] and password == name["password"]:
             if name["letter"] == True:
                 trues+=1
-            if not name["letter"] == False:
+            if name["letter"] == False:
                 falses+=1
     data["trues"] = trues
     data["falses"] = falses

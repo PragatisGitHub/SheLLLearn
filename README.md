@@ -1,3 +1,3 @@
 # SheLLLearn
-ShellLearn is an interactive learning tool especially designed for the young children that evaluates the writing skills of  using a trained computer model.
-This model can also be used by people who are new to English language or people recovering from strokes to rehone the writing skills.
+SheLLLearn is an interactive learning tool designed to evaluate writing skills using a trained computer model.
+Our Model has many applications including the teaching of young children and those who are new to English as well as those using physical therapy to regain mobility and hone their writing skills after injury or stroke for example.  Additionally future builds can evaluate lower case numbers, beginning letter sounds and more!

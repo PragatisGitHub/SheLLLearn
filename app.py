@@ -12,10 +12,28 @@ from time import time
 
 app = Flask(__name__)
 
-userID = 'none'
-password = 'none'
+userID = 'user1'
+password = 'user1'
 model = None
 graph = None
+
+import pymongo
+try:
+    myclient = pymongo.MongoClient("mongodb://admin:admin@shelllern-shard-00-00-xwhf2.gcp.mongodb.net:27017,shelllern-shard-00-01-xwhf2.gcp.mongodb.net:27017,shelllern-shard-00-02-xwhf2.gcp.mongodb.net:27017/ShellLern?ssl=true&replicaSet=ShellLern-shard-0&authSource=admin&retryWrites=true")
+    mydb = myclient["ShellLern"]
+    shell_coll = mydb["students"]
+    # mydict = { "name": "John", "password": "Highway 37" }
+    # x = shell_coll.insert_one(mydict)
+    # print(x.inserted_id)
+    #
+    # print(myclient.list_database_names())
+    # x = shell_coll.find_one()
+    #
+    # print(x)
+    #
+    # print(myclient.list_database_names())
+except Exception as exc:
+    print(exc)
 
 # Loading a keras model with flask
 # https://blog.keras.io/building-a-simple-keras-deep-learning-rest-api.html
@@ -67,13 +85,20 @@ def about():
 def login():
     error = None
     if request.method == 'POST':
-        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
-            error = 'Invalid Credentials. Please try again.'
-        else:
-            userID = request.form['username']
-            password = request.form['password']
-            return redirect(url_for('about'))
-    return render_template('login.html', error=error)
+        global userID
+        userID= request.form['username'].lower()
+        global password
+        password= request.form['password'].lower()
+        new_user = True
+        for name in shell_coll.find({},{"name":1, "password":1}):
+            if userID == name["name"] and password == name["password"]:
+                new_user = False
+                break
+        if new_user:
+            new_record = { "name": userID, "password": password, "letter": " ", "number": " " }
+            x = shell_coll.insert_one(new_record)
+        return redirect(url_for('about'))
+
  
 @app.route('/ShellLearn_book', methods=['GET', 'POST'])
 def level1ABC():
@@ -96,8 +121,12 @@ TMP_DIR_NAME = 'Images'
 
 Choice = " "
 
+Symbol = ''
+
 @app.route("/Alphabets/", methods=['POST'], endpoint="Alphabets")
 def Alphabets():
+    Symbol = request.json['symbol']
+#    print(Symbol)
     Choice = "Alpha"
     load_model(Choice)
     Choice = " "
@@ -125,13 +154,35 @@ def Alphabets():
         predicted_digit = model.predict_classes(image_array)[0]
         pred_letter = amap[predicted_digit+1]
         data["prediction"] = pred_letter
+        if pred_letter ==Symbol:
+            data["result"] = True
+        else:
+            data["result"] = False
         # indicate that the request was a success
         # data["success"] = True
+    for name in shell_coll.find({},{"name":1, "password":1}):
+        if userID == name["name"] and password == name["password"]:
+            new_record = { "name": userID, "password": password, "letter": data["result"], "number": " "}
+            x = shell_coll.insert_one(new_record)
+            break
+        # counter for true anf false for current user
+    trues=0
+    falses=0
+    for name in shell_coll.find({},{"name":1, "password":1, "letter":1}):
+        if userID == name["name"] and password == name["password"]:
+            if name["letter"] == True:
+                trues+=1
+            if not name["letter"] == False:
+                falses+=1
+    data["trues"] = trues
+    data["falses"] = falses
+
 
     return jsonify(data)   
 
 @app.route("/Numbers/", methods=['POST'], endpoint="Numbers")
 def Numbers():
+    Symbol = request.json['symbol']
     Choice = "Num"
     load_model(Choice)
     Choice = " "
@@ -160,8 +211,29 @@ def Numbers():
         predicted_digit = model.predict_classes(image_array)[0]
         # pred_letter = amap[predicted_digit+1]
         data["prediction"] = int(predicted_digit)
+        if str(predicted_digit) ==Symbol:
+            data["result"] = True
+        else:
+            data["result"] = False
         # indicate that the request was a success
         # data["success"] = True
+    for name in shell_coll.find({},{"name":1, "password":1}):
+        if userID == name["name"] and password == name["password"]:
+            new_record = { "name": userID, "password": password, "number": data["result"], "letter": " " }
+            x = shell_coll.insert_one(new_record)
+            break
+    # counter for true anf false for current user
+    trues=0
+    falses=0
+    for name in shell_coll.find({},{"name":1, "password":1, "number":1}):
+        if userID == name["name"] and password == name["password"]:
+            if name["number"]== True:
+                trues+=1
+            if name["number"] == False:
+                falses+=1
+    data["trues"] = trues
+    data["falses"] = falses
+
 
     return jsonify(data)       
 

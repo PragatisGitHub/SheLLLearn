@@ -80,7 +80,7 @@
       </div>
     <div class="row">
       <div class="col-sm-6">
-    
+
         <!-- Start Painterro -->
     <script>
         var ptro = Painterro({
@@ -89,7 +89,8 @@
                 xhr.open('POST', 'http://127.0.0.1:5000/Alphabets/')
                 xhr.setRequestHeader('Content-Type', 'application/json')
                 xhr.send(JSON.stringify({
-                    image: image.asDataURL('image/png')
+                    image: image.asDataURL('image/png'),
+                    symbol: symbol
                 }))
                 xhr.onload = function (e) {
                   //  console.log(this.responseText);
@@ -97,7 +98,7 @@
                     window.location.reload()
                     var obj = JSON.parse(this.responseText);
                     // alert("Prediction:  - "+obj.prediction+" - \n \nSuccess:  "+obj.success);
-                    alert("Prediction:  - "+obj.prediction);
+                    alert("Recognition:  - "+obj.prediction+"   Result: "+obj.result+"\nTrue: "+obj.trues+"   False: "+obj.falses);
                 }
 
             },
@@ -113,6 +114,7 @@
       <div class="row">
         <div class="col-sm-6">
       <script>
+      var symbol = 'x'
         function random_upper(){
         var UpperLetterCards=new Array()
         //specify random images below. You can have as many as you wish
@@ -147,6 +149,7 @@
         if (ry==0)
         ry=1
         document.write('<img src="../static/img/upperlettercards/'+UpperLetterCards[ry]+'" border=0, height=500 float: center;>')
+        symbol = UpperLetterCards[ry].substring(7,8)
         }
         random_upper()
     </script>

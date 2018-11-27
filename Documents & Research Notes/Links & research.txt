@@ -1,5 +1,7 @@
 https://machinelearningmastery.com/when-to-use-mlp-cnn-and-rnn-neural-networks/
 
+https://www.quora.com/What-is-the-difference-between-regression-classification-and-clustering-in-machine-learning
+
 https://keras.io/getting-started/sequential-model-guide/
 https://keras.io/layers/convolutional/
 https://keras.io/layers/pooling/

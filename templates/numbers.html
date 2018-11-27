@@ -10,45 +10,51 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="../static/js/painterro-0.2.68.min.js"></script>
     <style>
-    body {
-        font: 20px Montserrat, sans-serif;
-        line-height: 1.8;
-        color: #000000;
-    }
-    p {font-size: 16px;}
-    .margin {margin-bottom: 45px;}
-    .bg-1 { 
+      body {
+        background-repeat: no-repeat; 
+        background-size: auto;
+        background-position: center;
         background-color: #1aa9bc; /* Green */
-        color: #ffffff;
-    }
-    .navbar {
-        padding-top: 15px;
-        padding-bottom: 15px;
-        border: 0;
-        border-radius: 0;
-        margin-bottom: 0;
-        font-size: 12px;
-        letter-spacing: 5px;
-    }
-    .navbar-nav  li a:hover {
-        color: #1abc9c !important;
-    }
-    .ptro-holder-wrapper {
-      height: 500px !important; 
-      width: 500px !important;
-      margin-top: 100px !important;
-    }
-    .ptro-holder {
-      height: 500px;
-      width: 500px;
-      margin-top: 100px;
-    }
-    img {
-      float: right;
-    }
-    </style>
-  </head>
-  <body>
+        font: 20px Montserrat, sans-serif;
+        line-height: 2;
+        color: #000000;
+      }
+      p {font-size: 16px;}
+      .margin {margin-bottom: 45px;}
+      .bg-1 { 
+          background-color: #1aa9bc; /* Green */
+          color: #ffffff;
+      }
+      .navbar {
+          padding-top: 15px;
+          padding-bottom: 15px;
+          border: 0;
+          border-radius: 0;
+          margin-bottom: 0;
+          font-size: 16px;
+          letter-spacing: 5px;
+      }
+      .navbar-nav  li a:hover {
+          color: #1abc9c !important;
+      }
+      .ptro-holder-wrapper {
+        height: 1px !important; 
+        width: 1px !important;
+        margin-top: 1px !important;
+        color: lightgrey
+      }
+      .ptro-holder {
+        height: 560px;
+        width: 560px;
+        margin-top: 100px;
+      }
+      img {
+        float: right;
+        padding-right: 50px;
+      }
+      </style>
+    </head>
+    <body>
   
   <!-- Navbar -->
   <nav class="navbar navbar-default">
@@ -63,11 +69,11 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/ShellLearn_book">Home</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/letters">Letters</a></li>
-            <li><a href="/numbers">Numbers</a></li>
-            <li><a href="/about">About</a></li>
+              <li><a href="/login">Login</a></li>
+              <li><a href="/ShellLearn_book">Home</a></li>
+              <li><a href="/letters">Letters</a></li>
+              <li><a href="/numbers">Numbers</a></li>
+              <li><a href="/about">About</a></li>
           </ul>
       </div>
     </div>
@@ -95,13 +101,14 @@
                     window.location.reload()
                     var obj = JSON.parse(this.responseText);
                     // alert("Prediction:  - "+obj.prediction+" - \n \nSuccess:  "+obj.success);
-                     alert("Recognition:  - "+obj.prediction+"   Result: "+obj.result+"\nTrue: "+obj.trues+"   False: "+obj.falses);
+                     alert("You wrote the number:  - "+obj.prediction+"   Result: "+obj.result+"\nYour Score: \nTrue: "+obj.trues+"   False: "+obj.falses);
                 }
             },
             defaultTool: "brush",
-            // fontStrokeSize: 90
-            defaultLineWidth: 20
-        })
+            defaultSize: '560x560',
+            defaultLineWidth: 25,
+            hiddenTools: ['crop', 'line', 'rect', 'ellipse','text', 'rotate', 'resize', 'open', 'close']
+            })
         ptro.show()
       </script>
         <!-- End Painterro -->
